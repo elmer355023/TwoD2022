@@ -8,12 +8,23 @@ import kotlinx.android.synthetic.main.activity_main.*
 import s1092796.pu.edu.com.example.TwoD.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    lateinit var job: Job
+
 
     lateinit var binding: ActivityMainBinding
     var secondsLeft:Int = 1000  //倒數
 
+    lateinit var job: Job
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        super.onCreate(savedInstanceState)
+        //setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.txv.text = secondsLeft.toString()
+        binding.btnStart.isEnabled = true
+        binding.btnStop.isEnabled = false
 
         binding.btnStart.setOnClickListener(object:View.OnClickListener{
             override fun onClick(p0: View?) {
@@ -28,15 +39,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
-
-        super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_main)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        binding.txv.text = secondsLeft.toString()
-        binding.btnStart.isEnabled = true
-        binding.btnStop.isEnabled = false
 
         binding.btnStop.setOnClickListener(object:View.OnClickListener{
             override fun onClick(p0: View?) {
