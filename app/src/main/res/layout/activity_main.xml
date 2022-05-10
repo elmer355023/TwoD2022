@@ -22,13 +22,15 @@
         android:id="@+id/btnStart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="btnStart" />
+        android:text="開始"
+        android:textSize="24sp"/>
 
     <Button
         android:id="@+id/btnStop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="btnStop" />
+        android:text="停止"
+        android:textSize="24sp"/>
 
     <s1092796.pu.edu.com.example.TwoD.MySurfaceView
         android:id="@+id/mysv"

@@ -1,5 +1,6 @@
 package s1092796.pu.edu.com.example.TwoD
 
+import android.graphics.Canvas
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnStart.setOnClickListener(object:View.OnClickListener{
             override fun onClick(p0: View?) {
+                binding.mysv.Score = 0
                 job = GlobalScope.launch(Dispatchers.Main) {
                     while(secondsLeft > 0) {
                         secondsLeft--
@@ -35,6 +37,11 @@ class MainActivity : AppCompatActivity() {
                         binding.btnStart.isEnabled = false
                         binding.btnStop.isEnabled = true
                         delay(25)
+
+                        val canvas: Canvas = binding.mysv.holder.lockCanvas()
+                        binding.mysv.drawSomething(canvas)
+                        binding.mysv.holder.unlockCanvasAndPost(canvas)
+
                     }
                 }
             }
@@ -62,6 +69,11 @@ class MainActivity : AppCompatActivity() {
                     secondsLeft--
                     binding.txv.text = secondsLeft.toString()
                     delay(25)
+
+                    val canvas: Canvas = binding.mysv.holder.lockCanvas()
+                    binding.mysv.drawSomething(canvas)
+                    binding.mysv.holder.unlockCanvasAndPost(canvas)
+
                 }
             }
         }
